@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Client(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.OneToOneField(User, related_name='customer', on_delete=models.CASCADE)
+    created_by = models.OneToOneField(User, related_name='client', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']

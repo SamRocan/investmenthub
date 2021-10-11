@@ -3,6 +3,10 @@
 {% block content %}
 <h1>Home</h1>
 <a href="{% url 'product_home' %}">See products</a>
+{% if user.is_authenticated %}
 <a href="{% url 'client_admin' %}">Client Admin</a>
+{% else %}
 <a href="{% url 'register' %}">Sign Up</a>
+<a href="{% url 'login' %}">Sign In</a>
+{% endif %}
 {% endblock %}
