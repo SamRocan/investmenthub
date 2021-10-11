@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div>
+    <ul>
+        {% for p in products %}
+        <li>{{p.title}}: £{{p.price}} <a href="{{p.file.url}}" style="text-decoration: none">(download)</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

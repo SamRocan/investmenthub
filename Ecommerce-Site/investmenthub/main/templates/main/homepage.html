@@ -2,5 +2,7 @@
 
 {% block content %}
 <h1>Home</h1>
+<a href="{% url 'product_home' %}">See products</a>
+<a href="{% url 'client_admin' %}">Client Admin</a>
 <a href="{% url 'register' %}">Sign Up</a>
 {% endblock %}

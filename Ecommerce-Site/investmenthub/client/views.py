@@ -19,3 +19,6 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'client/register.html', {'form':form})
+
+def client_admin(request):
+    return render(request, 'client/client_admin.html')
