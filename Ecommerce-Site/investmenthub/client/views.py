@@ -26,7 +26,9 @@ def register(request):
 
 @login_required
 def client_admin(request):
-    return render(request, 'client/client_admin.html')
+    client = request.user.client
+    products = client.products.all()
+    return render(request, 'client/client_admin.html', {'products':products})
 
 @login_required
 def add_product(request):
