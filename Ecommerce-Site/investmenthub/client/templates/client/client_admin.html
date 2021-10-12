@@ -78,7 +78,11 @@
                             </div>
                             <br>
                             <div class="content-box">
-                                <input placeholder="Search Your Analysis" style="width: 100%; text-align: center">
+                                <form method="get">
+                                    {{myFilter.form}}
+                                    <button type="submit">Search</button>
+                                    <!--<input placeholder="Search Your Analysis" style="width: 100%; text-align: center">-->
+                                </form>
                             </div>
                             <div id="content-box-right">
                                 {% for product in products %}

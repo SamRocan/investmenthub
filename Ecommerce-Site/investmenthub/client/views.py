@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Client
 from product.forms import ProductForm
+from .filters import ProductFilter
+
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -28,7 +30,12 @@ def register(request):
 def client_admin(request):
     client = request.user.client
     products = client.products.all()
-    return render(request, 'client/client_admin.html', {'products':products})
+
+    myFilter = ProductFilter(request.GET, queryset=products)
+
+    products = myFilter.qs
+
+    return render(request, 'client/client_admin.html', {'products':products, 'myFilter':myFilter})
 
 @login_required
 def add_product(request):
