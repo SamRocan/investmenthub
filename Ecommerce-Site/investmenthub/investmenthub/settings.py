@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'main',
     'client',
     'product',
-    'django_filters'
+    'django_filters',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

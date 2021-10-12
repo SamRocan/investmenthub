@@ -2,6 +2,13 @@
 
 {% block content %}
 <div>
+    <div class="content-box">
+        <form method="get">
+            {{myFilter.form}}
+            <button type="submit">Search</button>
+            <!--<input placeholder="Search Your Analysis" style="width: 100%; text-align: center">-->
+        </form>
+    </div>
     <ul>
         {% for p in products %}
         <li>{{p.title}}: £{{p.price}} <a href="{{p.file.url}}" style="text-decoration: none">(download)</a></li>

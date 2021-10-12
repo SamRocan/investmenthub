@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Client
 from product.forms import ProductForm
-from .filters import ProductFilter
+from .filters import UserProductFilter
 
 # Create your views here.
 def register(request):
@@ -30,12 +30,16 @@ def register(request):
 def client_admin(request):
     client = request.user.client
     products = client.products.all()
-
-    myFilter = ProductFilter(request.GET, queryset=products)
+    noOfProducts = client.products.count()
+    myFilter = UserProductFilter(request.GET, queryset=products)
 
     products = myFilter.qs
-
-    return render(request, 'client/client_admin.html', {'products':products, 'myFilter':myFilter})
+    context = {
+        'products':products,
+        'productCount':noOfProducts,
+        'myFilter':myFilter
+    }
+    return render(request, 'client/client_admin.html', context)
 
 @login_required
 def add_product(request):
