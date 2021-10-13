@@ -3,4 +3,33 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <h1>Checkout Now</h1>
+{% if cart %}
+<table>
+<thead>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for item in cart %}
+    <tr>
+        <td>{{item.product}}</td>
+        <td>{{item.total_price}}</td>
+        <td><a href="?remove_from_cart={{ item.id }}">Remove</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+<tfoot>
+<tr>
+    <td><strong>Total cost</strong></td>
+    <td><strong>{{ cart|length}}</strong></td>
+    <td colspan="2"><strong>${{ cart.get_total_cost }}</strong></td>
+</tr>
+</tfoot>
+</table>
+{% else %}
+<p>You don't have any products in your cart!</p>
+{% endif %}
 {% endblock %}

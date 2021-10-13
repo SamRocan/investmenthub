@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra-css%}
+<link rel="stylesheet" href="{% static 'product_home_style.css' %}">
+{% endblock %}
+{% block content %}
+<h1>{{ product.title }}, ${{ product.price }}</h1>
+<p>{{ product.description }}</p>
+<form method="post" action=".">
+    {% csrf_token %}
+
+    <div>
+    <button>Add to Cart</button>
+    </div>
+</form>
+{% endblock %}

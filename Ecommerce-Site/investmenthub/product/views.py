@@ -1,13 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 # Create your views here.
 
 from .models import Product
 from client.filters import ProductFilter
+from cart.cart import Cart
+
 def product_home(request):
     products = Product.objects.all()
     myFilter = ProductFilter(request.GET, queryset=products)
 
     products = myFilter.qs
-    return render(request, 'product/product_home.html', {'products':products, 'myFilter':myFilter})
+    return render(request, 'product/product_search.html', {'products':products, 'myFilter':myFilter})
 
+def product_page(request, product_slug):
+    cart = Cart(request)
+
+    product = get_object_or_404(Product, slug=product_slug)
+    if request.method == 'POST':
+        cart.add(product_id=product.id, quantity=1)
+        print("Added")
+        return redirect('product_page', product_slug=product_slug)
+
+
+    return render(request, 'product/product_page.html', {'product':product})

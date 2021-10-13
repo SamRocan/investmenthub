@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Home</h1>
-<a href="{% url 'product_home' %}">See products</a>
+<a href="{% url 'product_search' %}">See products</a>
 {% if user.is_authenticated %}
 <a href="{% url 'client_admin' %}">Client Admin</a>
 {% else %}
