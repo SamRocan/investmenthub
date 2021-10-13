@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'client',
     'product',
+    'cart',
     'django_filters',
     'crispy_forms',
 ]
