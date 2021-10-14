@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from .models import Client
+from product.models import Product
 from product.forms import ProductForm
 from .filters import UserProductFilter
 
@@ -55,3 +56,25 @@ def add_product(request):
     else:
         form = ProductForm()
     return render(request, 'client/add_product.html', {'form':form})
+
+@login_required
+def edit_product(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
+    form = ProductForm(instance=product)
+
+    if(request.method == 'POST'):
+        form = ProductForm(request.POST, request.FILES, instance=product)
+
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.client = request.user.client
+            product.slug = slugify(product.title)
+            product.save()
+            return redirect('client_admin')
+        else:
+            form = ProductForm(instance=product)
+
+
+    return render(request, 'client/edit_product.html', {'form':form})
+
+

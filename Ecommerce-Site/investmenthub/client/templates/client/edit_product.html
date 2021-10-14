@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra-css%}
+{% endblock %}
+{% block content %}
+<h1>Edit Research</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button class="button is-dark is-uppercase">Submit</button>
+</form>
+{% endblock %}
