@@ -77,4 +77,12 @@ def edit_product(request, product_slug):
 
     return render(request, 'client/edit_product.html', {'form':form})
 
+def delete_product(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('client_admin')
+
+    return render(request, 'client/delete_product.html', {'item':product})
+
 

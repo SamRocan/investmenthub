@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra-css%}
+{% endblock %}
+{% block content %}
+<p>Confirm you want to delete {{item}}</p>
+
+<form action="{% url 'delete_product' item.slug %}" method="POST">
+    {% csrf_token %}
+
+    <a href="{% url 'client_admin' %}">Cancel</a>
+    <input type="submit" name="Confirm">
+</form>
+
+{% endblock %}
