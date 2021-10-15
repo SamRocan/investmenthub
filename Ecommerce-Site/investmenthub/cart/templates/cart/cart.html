@@ -29,8 +29,11 @@
 </tr>
 </tfoot>
 </table>
-<button id="JSButton">Click Me</button>
+{% if user.is_authenticated %}
 <div id="paypal-button-container"></div>
+{% else %}
+<a href="{% url 'login' %}">Please login to checkout</a>
+{% endif %}
 
 <!-- Include the PayPal JavaScript SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=AVCOguZWaNBES6Xqeh5LJLmNROT_98ujCixQZy1qmPFSFsBmjCvzZMO0bS8rqlQdXPCwyuU09FZuQI92&currency=USD"></script>
