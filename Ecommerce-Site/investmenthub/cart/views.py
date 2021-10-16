@@ -45,19 +45,20 @@ def notify_seller(cart):
         seller_email = i['product'].client.created_by.email
         email = EmailMessage(
             'Item Sold: ' + str(i['product'].title),
-            str(i['product'].title) + 'Has been purchased, '+str(i['product'].price) + 'has been transferrred to your Paypal Account',
+            str(i['product'].title) + 'Has been purchased, £'+str(i['product'].price) + ' has been transferred to your Paypal Account.',
             settings.DEFAULT_FROM_EMAIL,
             [seller_email],
             reply_to=[settings.DEFAULT_FROM_EMAIL],
             headers={'Message-ID': 'foo'},
         )
+        email.send()
 
 def notify_buyer(cart, buyer_email):
     for i in cart:
         file = i['product'].file.path
         email = EmailMessage(
             str(i['product'].title)+': Ready to Download',
-            'Thank you for purchasing ' + str(i['product'].title) + 'please find you file attached',
+            'Thank you for purchasing ' + str(i['product'].title) + '. Please find you file attached',
             settings.DEFAULT_FROM_EMAIL,
             [buyer_email],
             reply_to=[settings.DEFAULT_FROM_EMAIL],
