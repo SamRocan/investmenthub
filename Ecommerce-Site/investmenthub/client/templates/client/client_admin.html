@@ -60,13 +60,13 @@
                         <h5>Total Products: {{productCount}}</h5>
                     </div>
                     <div class="col content-box-right" style="background-color: rgba(29, 245, 83, 0.50)">
-                        <h5>Monthly Revenue: {{productCount}}</h5>
+                        <h5>Revenue: £{{revenue}}</h5>
                     </div>
                     <div class="col content-box-right" style="background-color: rgba(237, 111, 137, 0.50)">
-                        <h5>Products Sold: {{productCount}}</h5>
+                        <h5>Products Sold: {{noOfOrders}}</h5>
                     </div>
                     <div class="col content-box-right" style="background-color: rgba(230, 227, 24, 0.50)">
-                        <h5>Most Popular Product: {{productCount}}</h5>
+                        <h5>Most Popular Product: {{noOfOrders}}</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -90,14 +90,10 @@
                     <div class="col-sm-6">
                         <h5 style="text-align: center">Your Products</h5>
                         <table class="styled-table">
-                            <thead>
                             <tr>
                                 <th>Product</th>
                                 <th>Link</th>
-                                <th>Other</th>
                             </tr>
-                            </thead>
-                            <tbody>
                             {% for product in products %}
                             <tr>
                                 <td>{{product.title}}</td>
@@ -106,7 +102,21 @@
                                 <td><a href="{% url 'delete_product' product.slug %}">Delete</a></td>
                             </tr>
                             {% endfor %}
-                            </tbody>
+                        </table>
+                        <h5 style="text-align: center">Your Orders</h5>
+                        <table class="styled-table">
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{order.last_name}}</td>
+                                <td>{{order.created_at}}</td>
+                                <td>{{order.paid_amount}}</td>
+                            </tr>
+                            {% endfor %}
                         </table>
                     </div>
                 </div>
