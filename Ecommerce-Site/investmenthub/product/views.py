@@ -3,14 +3,18 @@ from django.http import HttpResponse
 # Create your views here.
 
 from .models import Product
-from client.filters import ProductFilter
+from client.filters import ProductFilter, BasicProductFilter
 from cart.cart import Cart
 
 def product_home(request):
     products = Product.objects.all()
-    myFilter = ProductFilter(request.GET, queryset=products)
-
-    products = myFilter.qs
+    if request.method == "POST":
+        prodQuery = request.POST["product_searcher"]
+        products = Product.objects.filter(title__contains=prodQuery)
+        myFilter = ProductFilter(request.GET, queryset=products)
+    else:
+        myFilter = ProductFilter(request.GET, queryset=products)
+        products = myFilter.qs
     return render(request, 'product/product_search.html', {'products':products, 'myFilter':myFilter})
 
 def product_page(request, product_slug):

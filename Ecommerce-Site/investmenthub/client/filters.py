@@ -19,3 +19,10 @@ class ProductFilter(django_filters.FilterSet):
         model = Product
         fields = ['client']
         exclude = ['file', 'slug']
+
+class BasicProductFilter(django_filters.FilterSet):
+    name = CharFilter(label="Name", field_name="title", lookup_expr='icontains')
+    class Meta:
+        model = Product
+        fields = ''
+        exclude = ['file','client', 'slug']

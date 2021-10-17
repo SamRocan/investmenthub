@@ -33,22 +33,12 @@ def client_admin(request):
     client = request.user.client
     products = client.products.all()
     noOfProducts = client.products.count()
-    orders = client.orders.all()
-
-    revenue = 0
-    for order in orders:
-        revenue += order.paid_amount
-
-    noOfOrders = client.orders.count()
     myFilter = UserProductFilter(request.GET, queryset=products)
 
     products = myFilter.qs
     context = {
         'products':products,
         'productCount':noOfProducts,
-        'orders':orders,
-        'revenue':revenue,
-        'noOfOrders':noOfOrders,
         'myFilter':myFilter
     }
     return render(request, 'client/client_admin.html', context)
