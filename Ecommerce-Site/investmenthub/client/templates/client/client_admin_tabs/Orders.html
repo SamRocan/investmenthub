@@ -1,0 +1,25 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="row client-overview" style="background-color: rgba(198,198,202,0.10)">
+    <div class="col content-box-right" style="background-color: rgba(91, 60, 168, 0.50)">
+
+        <h5>Total Products: {{productCount}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(29, 245, 83, 0.50)">
+        <h5>Monthly Revenue: £{{revenue}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(237, 111, 137, 0.50)">
+        <h5>Products Sold: {{noOfOrders}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(230, 227, 24, 0.50)">
+        <h5>Most Popular Product: {{productCount}}</h5>
+    </div>
+    <div id="grid-wrapper">
+        <div class="content-box" id="orders-one">Downloads<hr></div>
+        <div class="content-box" id="orders-two">Top Selling Product<hr></div>
+        <div class="content-box" id="orders-three">Locations <hr> </div>
+        <div class="content-box" id="orders-four">Revenue <hr> </div>
+        <div class="content-box" id="orders-five">Revenue Over time <hr> </div>
+        <div class="content-box" id="orders-six">Research Published <hr> </div>
+    </div>
+</div>

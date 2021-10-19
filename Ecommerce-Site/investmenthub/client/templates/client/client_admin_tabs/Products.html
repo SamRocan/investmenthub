@@ -1,0 +1,48 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="row client-overview">
+    <div class="col content-box-right" style="background-color: rgba(91, 60, 168, 0.50)">
+
+        <h5>Total Products: {{productCount}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(29, 245, 83, 0.50)">
+        <h5>Monthly Revenue: £{{revenue}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(237, 111, 137, 0.50)">
+        <h5>Products Sold: {{noOfOrders}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(230, 227, 24, 0.50)">
+        <h5>Most Popular Product: {{productCount}}</h5>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="content-box">
+        <form method="get" style="text-align: center">
+            {{ProductsFilter.form|crispy}}
+            <button type="submit">Search</button>
+            <!--<input placeholder="Search Your Analysis" style="width: 100%; text-align: center">-->
+        </form>
+    </div>
+</div>
+<div class="col-sm-6">
+    <h5 style="text-align: center">Your Products</h5>
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Product</th>
+            <th>Link</th>
+            <th>Other</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{product.title}}</td>
+            <td><a href="{{product.file.url}}">download</a></td>
+            <td><a href="{% url 'edit_product' product.slug %}">Edit</a></td>
+            <td><a href="{% url 'delete_product' product.slug %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

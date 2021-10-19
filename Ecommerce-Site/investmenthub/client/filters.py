@@ -1,6 +1,7 @@
 import django_filters
-from django_filters import DateFilter, CharFilter
+from django_filters import DateRangeFilter, CharFilter, ChoiceFilter
 from product.models import *
+from order.models import *
 
 class UserProductFilter(django_filters.FilterSet):
     name = CharFilter(label="Name", field_name="title", lookup_expr='icontains')
@@ -26,3 +27,9 @@ class BasicProductFilter(django_filters.FilterSet):
         model = Product
         fields = ''
         exclude = ['file','client', 'slug']
+
+class OrderFilter(django_filters.FilterSet):
+    date_range = DateRangeFilter(field_name='created_at')
+    class Meta:
+        model = Order
+        fields = ''

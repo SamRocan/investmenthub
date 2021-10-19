@@ -1,4 +1,4 @@
-#client-overview{
+.client-overview{
     position: relative;
     padding-bottom: 20px;
     text-align: center;
@@ -10,11 +10,58 @@
     margin-top: 10px;
     background-color: dodgerblue;
 }
+.content-box{
+    border-radius: 5px;
+}
+.content-box hr{
+    margin: 5px;
+}
 .content-box-right{
     border-radius: 5px;
     margin-left: 5px;
     margin-top: 10px;
     background-color: beige;
+}
+
+/* orders */
+#grid-wrapper{
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+#orders-one{
+    background-color: white;
+    grid-column: 1;
+    grid-row: 1;
+}
+#orders-two{
+    background-color: white;
+    grid-column: 2;
+    grid-row: 1;
+}
+#orders-three{
+    background-color:white;
+    grid-column: 3;
+    grid-row: 1;
+}
+#orders-four{
+    background-color: white;
+    grid-column: 1;
+    grid-row: 2;
+}
+#orders-five{
+    background-color: white;
+    grid-column-start:2;
+    grid-column-end:4;
+    grid-row-start:2;
+    grid-row-end:4;
+}
+#orders-six{
+    background-color: white;
+    grid-column: 1;
+    grid-row: 3;
 }
 
 /* table */

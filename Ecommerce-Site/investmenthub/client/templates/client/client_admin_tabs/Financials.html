@@ -1,0 +1,44 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="row client-overview">
+    <div class="col content-box-right" style="background-color: rgba(91, 60, 168, 0.50)">
+
+        <h5>Total Products: {{productCount}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(29, 245, 83, 0.50)">
+        <h5>Monthly Revenue: £{{revenue}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(237, 111, 137, 0.50)">
+        <h5>Products Sold: {{noOfOrders}}</h5>
+    </div>
+    <div class="col content-box-right" style="background-color: rgba(230, 227, 24, 0.50)">
+        <h5>Most Popular Product: {{productCount}}</h5>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+
+    <canvas id="chart"></canvas>
+    <script>
+        let ctx = document.getElementById("chart").getContext("2d");
+
+        let chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
+                datasets: [
+                    {
+                        label: "Gross volume ($)",
+                        backgroundColor: "#79AEC8",
+                        borderColor: "#417690",
+                        data: [26900, 28700, 27300, 29200]
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    text: "Gross Volume in 2020",
+                    display: true
+                }
+            }
+        });
+    </script>
+</div>

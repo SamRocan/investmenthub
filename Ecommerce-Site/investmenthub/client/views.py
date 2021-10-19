@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Client
 from product.models import Product
 from product.forms import ProductForm
-from .filters import UserProductFilter
+from .filters import UserProductFilter, OrderFilter
 
 # Create your views here.
 def register(request):
@@ -40,16 +40,21 @@ def client_admin(request):
         revenue += order.paid_amount
 
     noOfOrders = client.orders.count()
-    myFilter = UserProductFilter(request.GET, queryset=products)
+    ProductsFilter = UserProductFilter(request.GET, queryset=products)
 
-    products = myFilter.qs
+    OrdersFilter = OrderFilter(request.GET, queryset=orders)
+
+
+    products = ProductsFilter.qs
+    orders = OrdersFilter.qs
     context = {
         'products':products,
         'productCount':noOfProducts,
         'orders':orders,
         'revenue':revenue,
         'noOfOrders':noOfOrders,
-        'myFilter':myFilter
+        'ProductsFilter':ProductsFilter,
+        'OrdersFilter':OrdersFilter,
     }
     return render(request, 'client/client_admin.html', context)
 

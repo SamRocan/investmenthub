@@ -1,0 +1,26 @@
+{% load static %}
+{% load crispy_forms_tags %}
+    <div class="row client-overview">
+        <div class="col-md content-box-right" style="background-color: rgba(91, 60, 168, 0.50)">
+            <h5>Total Products: {{productCount}}</h5>
+        </div>
+        <div class="col-md content-box-right" style="background-color: rgba(29, 245, 83, 0.50)">
+            <h5>Monthly Revenue: £{{revenue}}</h5>
+        </div>
+        <div class="col-md content-box-right" style="background-color: rgba(237, 111, 137, 0.50)">
+            <h5>Products Sold: {{noOfOrders}}</h5>
+        </div>
+        <div class="col-md content-box-right" style="background-color: rgba(230, 227, 24, 0.50)">
+            <h5>Most Popular Product: {{productCount}}</h5>
+        </div>
+    </div>
+<div class="row">
+    <div class="content-box">
+        <img src="/media/images/graph.jpg" style="max-width: 100%">
+    </div>
+    <br>
+    <div class="content-box">
+        <button style="width: 100%"><a href="{% url 'add_product' %}" style="text-decoration: none; color: black;">Add More analysis</a></button>
+    </div>
+    <br>
+</div>
