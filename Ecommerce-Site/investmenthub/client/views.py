@@ -5,7 +5,10 @@ from django.contrib.auth import login
 from .forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
+from .charts import get_year_dict, generate_color_palette, generate_color_palette_boarder
 from .models import Client
 from product.models import Product
 from product.forms import ProductForm
@@ -57,6 +60,30 @@ def client_admin(request):
         'OrdersFilter':OrdersFilter,
     }
     return render(request, 'client/client_admin.html', context)
+
+class ChartData(APIView):
+
+    def get(self, request, format = None):
+        client = request.user.client
+        orders = client.orders.all()
+        dates = []
+        paid = []
+        for order in orders:
+            if(str(order.created_at.date()) in dates):
+                index = dates.index(str(order.created_at.date()))
+                paid[index]+=int(order.paid_amount)
+            else:
+                dates.append(str(order.created_at.date()))
+                paid.append(int(order.paid_amount))
+        colorPalette = generate_color_palette(len(paid))
+        colorPaletteBoarder = generate_color_palette_boarder(len(paid))
+        data = {
+            'colorPaletteBoarder':colorPaletteBoarder,
+            'colorPalette':colorPalette,
+            'dates':dates,
+            'paid':paid
+        }
+        return Response(data)
 
 @login_required
 def add_product(request):

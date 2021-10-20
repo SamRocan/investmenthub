@@ -24,3 +24,4 @@ $('#settings-but').on('click',function() {
     //If 1 is showing, show 2, hide all other divs
     $('#main-5').show().siblings('main').hide();
 });
+

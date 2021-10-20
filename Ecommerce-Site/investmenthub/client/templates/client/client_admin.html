@@ -4,6 +4,8 @@
 
 {% block extra-css%}
 <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+
 {% endblock %}
 {% block content %}
 <div class="container-fluid overflow-hidden">
@@ -57,4 +59,117 @@
 {% endblock %}
 {% block extraJS %}
 <script src="{% static 'admin_script.js' %}"></script>
+<script>
+    var endpoint = '/client/graphs/'
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(data) {
+            drawLineGraph(data, 'graphCanvas');
+
+        },
+        error: function(error_data) {
+
+            console.log(error_data);
+        }
+    })
+    function drawLineGraph(data, id) {
+        var labels = data.dates;
+        var chartData = data.paid;
+        var colorPalette = data.colorPalette
+        var ctx = document.getElementById(id).getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Model Graph",
+                    backgroundColor: 'rgba(55, 99, 132, 0.2)',
+                    borderColor:'rgb(55, 99, 132)',
+                    data: chartData,
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: true
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+
+        });
+    }
+    function drawBarGraph(data, id) {
+        var colorPalette = data.colorPalette
+        var colorPaletteBoarder = data.colorPaletteBoarder
+        var labels = data.dates;
+        var chartData = data.paid;
+        var ctx = document.getElementById(id).getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Hello",
+                    data: chartData,
+                    backgroundColor:colorPalette,
+                    borderColor:colorPaletteBoarder,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+    function drawPieGraph(data, id) {
+        var colorPalette = data.colorPalette
+        var colorPaletteBoarder = data.colorPaletteBoarder
+        var labels = data.dates;
+        var chartData = data.paid;
+        var ctx = document.getElementById(id).getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: labels,
+                    data: chartData,
+                    backgroundColor:colorPalette,
+                    borderColor:colorPaletteBoarder,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Chart.js Pie Chart'
+                    }
+                }
+            },
+        });
+    }
+</script>
 {% endblock %}
