@@ -5,6 +5,7 @@
     table-layout: fixed;
     font-size: 0.9em;
     font-family: sans-serif;
+    border-radius: 5px 5px 0 0;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-left: auto;
     margin-right: auto;
@@ -12,7 +13,6 @@
 }
 
 .styled-table tbody{
-    display:block;
     width: 100%;
     overflow: auto;
     text-align: center;
@@ -20,11 +20,10 @@
 }
 
 .styled-table thead tr {
-    background-color: rgba(34, 37, 41, .8);
+    background-color: white;
     border-radius: 5px 5px 0 0;
-    color: #ffffff;
+    color: black;
     text-align: center;
-    display: block;
 }
 
 .styled-table th,
@@ -47,7 +46,11 @@
     border-radius: 0 0 5px 5px;
 
 }
-.styled-table tbody tr:hover {
-    color: whitesmoke;
-    background-color: rgba(34, 31, 41, 0.71);
+a{
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+}
+a:hover{
+    color: royalblue;
 }

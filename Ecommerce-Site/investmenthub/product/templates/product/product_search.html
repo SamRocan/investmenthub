@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load product_extra %}
 {% block extra-css%}
 <link rel="stylesheet" href="{% static 'product_home_style.css' %}">
 {% endblock %}
@@ -17,17 +18,22 @@
     <table class="styled-table">
         <thead>
         <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Seller</th>
+            <td><p>Seller</p></td>
+            <td><p>Publisher</p></td>
+            <td><p>Price</p></td>
+            <td><p>Type</p></td>
         </tr>
         </thead>
         <tbody>
         {% for product in products %}
         <tr>
-            <td><a href="{% url 'product_page' product.slug %}">{{product.title}}</a></td>
-            <td>£{{product.price}}</td>
-            <td>{{product.client}}</td>
+            <td><a href="{% url 'product_page' product.slug %}">{{product.title}}</a>
+                <br>
+                <small>{{product.date_added.date}}</small>
+            </td>
+            <td><p>{{product.client}}</p></td>
+            <td><p>£{{product.price}}</p></td>
+            <td><p style="background-color:{{ colors|checkEqual:product.research_type }}; border-radius: 5px">{{product.research_type}}</p></td>
         </tr>
         {% endfor %}
         </tbody>
