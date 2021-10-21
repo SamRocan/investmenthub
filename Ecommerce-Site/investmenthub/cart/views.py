@@ -10,6 +10,7 @@ from django.conf import settings
 
 # Create your views here.
 def cart_detail(request):
+    # https://developer.paypal.com/developer/creditCardGenerator/
     cart = Cart(request)
     remove_from_cart = request.GET.get('remove_from_cart', '')
     if remove_from_cart:
@@ -26,9 +27,13 @@ class OrderCompleted(View):
         #Send Email from here
         current_user = request.user
         print("Running3")
+
+        # Uncomment when you want to notify the sellers
+        '''
         notify_buyer(cart, current_user.email)
         print("Running4")
-        notify_seller(cart)
+        notify_seller(cart)'''
+
         print(current_user.email)
         checkout(request, current_user.first_name, current_user.last_name, current_user.email, cart.get_total_cost())
         print("Running5")

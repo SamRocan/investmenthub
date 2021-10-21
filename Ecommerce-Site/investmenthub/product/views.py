@@ -10,6 +10,7 @@ def product_home(request):
     products = Product.objects.all()
     if request.method == "POST":
         prodQuery = request.POST["product_searcher"]
+        print(prodQuery)
         products = Product.objects.filter(title__contains=prodQuery)
         myFilter = ProductFilter(request.GET, queryset=products)
     else:

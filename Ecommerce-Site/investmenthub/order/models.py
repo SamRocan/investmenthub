@@ -8,7 +8,7 @@ class Order(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=False) # Change to true when making real orders
     paid_amount = models.DecimalField(max_digits=8, decimal_places=2)
     client = models.ManyToManyField(Client, related_name='orders')
 
@@ -16,7 +16,7 @@ class Order(models.Model):
         ordering = ['created_at']
 
     def __str__(self):
-        return self.first_name
+        return self.last_name + ": £" + str(self.paid_amount)
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
