@@ -18,7 +18,7 @@ class ProductFilter(django_filters.FilterSet):
     price__lt = django_filters.NumberFilter(label="Max Price", field_name='price', lookup_expr='lt')
     class Meta:
         model = Product
-        fields = ['client']
+        fields = ['research_type'] #'client'
         exclude = ['file', 'slug']
 
 class BasicProductFilter(django_filters.FilterSet):

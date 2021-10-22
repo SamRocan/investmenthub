@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Create your views here.
 
 from .models import Product
+from order.models import OrderItem
 from client.filters import ProductFilter, BasicProductFilter
 from cart.cart import Cart
 
@@ -27,7 +30,13 @@ def product_home(request):
     else:
         myFilter = ProductFilter(request.GET, queryset=products)
         products = myFilter.qs
-    return render(request, 'product/product_search.html', {'products':products, 'myFilter':myFilter, 'colors':colors})
+
+    context = {
+        'products':products,
+        'myFilter':myFilter,
+        'colors':colors
+    }
+    return render(request, 'product/product_search.html', context)
 
 def product_page(request, product_slug):
     cart = Cart(request)
