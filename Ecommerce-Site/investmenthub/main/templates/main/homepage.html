@@ -1,14 +1,27 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% block extra-css%}
+<link rel="stylesheet" href="{% static 'homepage_style.css' %}">
 
+{% endblock %}
 {% block content %}
-<h1>Home</h1>
-<a href="{% url 'product_search' %}">See products</a>
-{% if user.is_authenticated %}
-<a href="{% url 'client_admin' %}">Client Admin</a>
-{% else %}
-<a href="{% url 'register' %}">Sign Up</a>
-<a href="{% url 'login' %}">Sign In</a>
-{% endif %}
+
+<div class="img-wrapper">
+    <img class="img-responsive" src="media/images/homepage-background.jpg"/>
+    <div class="header-overlay">
+        <h1 style="color: white">Investment Hub</h1>
+        <h4 style="color: white; margin-left: 20px; margin-right: 20px;">Search and Purchase Analysis from Top Investment Firms</h4>
+
+    </div>
+    <div class="img-overlay">
+        {% if user.is_authenticated %}
+        <a class="btn" href="{% url 'client_admin' %}" style="color: white; background-color: #0d6efd">Client Admin</a>
+        {% else %}
+        <a class="btn btn-primary" href="{% url 'register' %}">Sign Up Today</a>
+        {% endif %}
+        <a class="btn btn-light" href="{% url 'product_search' %}">See Products</a>
+    </div>
+</div>
 
 
 

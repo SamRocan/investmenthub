@@ -34,33 +34,6 @@
     border-bottom-left-radius: 0;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 100px) {
-    .form-inline .form-control {
-        width: 100px;
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .form-inline .form-control {
-        width: 210px;
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .form-inline .form-control {
-        width: 440px;
-    }
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .form-inline .form-control {
-        width: 600px;
-    }
-}
 
 .sub-menu.navbar-light .navbar-nav .active > .nav-link,
 .sub-menu.navbar-light .navbar-nav .nav-link.active,
@@ -93,17 +66,6 @@
     padding: 0 1rem;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .sub-menu {
-        padding: 0 1rem;
-    }
-
-    .sub-menu.navbar-expand-md .navbar-nav .nav-link {
-        padding: 1rem 1.5rem;
-    }
-}
-
 .navbar.bg-light {
     background: #fff !important;
     box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
@@ -126,11 +88,6 @@
     z-index: 5001;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     padding: 1.25rem 1rem 1rem;
-}
-@media (min-width: 768px){
-    #sidebar {
-        width: 30%;
-    }
 }
 
 #sidebar.active {
@@ -269,4 +226,50 @@ ul.social-icons li {
 .user-dropdown .dropdown-menu {
     left: auto;
     right: 0;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .form-inline .form-control {
+        width: 100px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .form-inline .form-control {
+        width: 210px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .form-inline .form-control {
+        width: 440px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .form-inline .form-control {
+        width: 600px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .sub-menu {
+        padding: 0 1rem;
+    }
+
+    .sub-menu.navbar-expand-md .navbar-nav .nav-link {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (min-width: 768px){
+    #sidebar {
+        width: 50%;
+    }
 }
