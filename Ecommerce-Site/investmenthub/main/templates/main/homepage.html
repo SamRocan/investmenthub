@@ -38,10 +38,16 @@
 </div>
 <div>
     <h1 class="section-header">New Arrivals</h1>
+    {% for product in newProducts %}
+    <p>{{product}}</p>
+    {% endfor %}
     <!-- put three cards in each list item, make the cards myself -->
 </div>
 <div>
     <h1 class="section-header">Most Popular</h1>
+    {% for product in mostPopularProducts %}
+    <p>{{product}}</p>
+    {% endfor %}
 </div>
 <div>
     <h1 class="section-header">About Us</h1>
