@@ -9,9 +9,8 @@
 <div class="img-wrapper">
     <img class="img-responsive" src="media/images/homepage-background.jpg"/>
     <div class="header-overlay">
-        <h1 style="color: white">Investment Hub</h1>
-        <h4 style="color: white; margin-left: 20px; margin-right: 20px;">Search and Purchase Analysis from Top Investment Firms</h4>
-
+        <h1 style="color: white; font-size: 5vw;">Investment Hub</h1>
+        <h4 style="color: white; margin-left: 20px; margin-right: 20px; font-size: 3vw;">Search and Purchase Analysis from Top Investment Firms</h4>
     </div>
     <div class="img-overlay">
         {% if user.is_authenticated %}
@@ -22,7 +21,35 @@
         <a class="btn btn-light" href="{% url 'product_search' %}">See Products</a>
     </div>
 </div>
-
+<div>
+    <h1 class="section-header">Categories</h1>
+    <ul class="gallery">
+        <li style="background: #f6bd60;"><h2 style="color:#8c6b35;">Profitability</h2></li>
+        <li style="background: #f7ede2;"><h2 style="color:#948d85;">Solvency</h2></li>
+        <li style="background: #f5cac3;"><h2 style="color:#8f746f;">Liquidity</h2></li>
+        <li style="background: #84a59d;"><h2 style="color:#35423f;">Trend</h2></li>
+        <li style="background: #f28482;"><h2 style="color:#8f4d4c;">Horizontal</h2></li>
+        <li style="background: #f6bd60;"><h2 style="color:#8c6b35;">Vertical</h2></li>
+        <li style="background: #f7ede2;"><h2 style="color:#948d85;">FP&A</h2></li>
+        <li style="background: #f5cac3;"><h2 style="color:#8f746f;">Variance</h2></li>
+        <li style="background: #84a59d;"><h2 style="color:#35423f;">Valuation</h2></li>
+        <li style="background: #f28482;"><h2 style="color:#8f4d4c;">Scenario & Sensitivity</h2></li>
+    </ul>
+</div>
+<div>
+    <h1 class="section-header">New Arrivals</h1>
+    <!-- put three cards in each list item, make the cards myself -->
+</div>
+<div>
+    <h1 class="section-header">Most Popular</h1>
+</div>
+<div>
+    <h1 class="section-header">About Us</h1>
+    <h2 class="section-header">Email List?</h2>
+</div>
+<div>
+    <h1 class="section-header">Footer</h1>
+</div>
 
 
 {% endblock %}
