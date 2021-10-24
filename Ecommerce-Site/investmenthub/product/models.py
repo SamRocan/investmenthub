@@ -9,6 +9,7 @@ class ResearchType(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
+    color = models.CharField(max_length=255, default="rgba(0, 0, 0, 0.0)")
 
     class Meta:
         ordering = ['ordering']

@@ -33,7 +33,7 @@
             </td>
             <td><p>{{product.client}}</p></td>
             <td><p>£{{product.price}}</p></td>
-            <td><p style="background-color:{{ colors|checkEqual:product.research_type }}; border-radius: 5px">{{product.research_type}}</p></td>
+            <td><p style="background-color:{{ product.research_type.color }}; border-radius: 5px">{{product.research_type}}</p></td>
         </tr>
         {% endfor %}
         </tbody>

@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block extra-css%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="{% static 'homepage_style.css' %}">
 
 {% endblock %}
@@ -38,16 +40,40 @@
 </div>
 <div>
     <h1 class="section-header">New Arrivals</h1>
-    {% for product in newProducts %}
-    <p>{{product}}</p>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            {% for product in newProducts %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description|slice:"30"}}...</p>
+                        <a href="#" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     <!-- put three cards in each list item, make the cards myself -->
 </div>
 <div>
     <h1 class="section-header">Most Popular</h1>
-    {% for product in mostPopularProducts %}
-    <p>{{product}}</p>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            {% for product in mostPopularProducts %}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">{{product.description|slice:"30"}}..</p>
+                        <a href="#" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 <div>
     <h1 class="section-header">About Us</h1>
