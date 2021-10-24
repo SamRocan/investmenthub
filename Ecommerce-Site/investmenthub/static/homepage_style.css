@@ -72,9 +72,7 @@ body{
     padding-left: 1rem;
     padding-top: 1rem;
 }
-
-/* Carousel Cards*/
-
+/* owl carousel */
 .wrapper{
     width: 100%;
 }
@@ -83,31 +81,16 @@ body{
     margin: auto;
     padding: 0 30px;
 }
-.carousel .card{
-    color: #fff;
+.owl-carousel{
+    display: flex;
+}
+.carousel-card{
     text-align: center;
     margin: 20px 0;
     line-height: 50px;
     box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.12);
     color: black;
-}
-.carousel .card-1{
-    background: white;
-}
-.carousel .card-2{
-    background: whitesmoke;
-}
-.carousel .card-3{
-    background: whitesmoke;
-}
-.carousel .card-4{
-    background: whitesmoke;
-}
-.carousel .card-5{
-    background: whitesmoke;
-}
-.carousel .card-6{
-    background: whitesmoke;
+    height: 600px;
 }
 .owl-dots{
     text-align: center;
@@ -128,10 +111,13 @@ body{
     background: #0072bc!important;
 }
 
-
+/* end */
 @media (max-width: 768px) {
     .img-overlay .btn {
         font-size: 70%;
     }
 }
+
+
+
 

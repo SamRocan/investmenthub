@@ -42,18 +42,15 @@
     <h1 class="section-header">New Arrivals</h1>
     <div class="container">
         <div class="row">
+            <div class="carousel owl-carousel">
             {% for product in newProducts %}
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <img src="{{product.research_type.image.url}}" height="200px" width="200px">
-                        <h5 class="card-title">{{product.title}}</h5>
-                        <p class="card-text">{{product.description|slice:"30"}}...</p>
-                        <a href="#" class="btn btn-primary">View</a>
-                    </div>
+                <div class="carousel-card">
+                    <img src="{{product.research_type.image.url}}">
+                    <h5>{{product.title}}</h5>
+                    <p>£{{product.price}}</p>
                 </div>
-            </div>
             {% endfor %}
+            </div>
         </div>
     </div>
     <!-- put three cards in each list item, make the cards myself -->
@@ -62,19 +59,16 @@
     <h1 class="section-header">Most Popular</h1>
     <div class="container">
         <div class="row">
+            <div class="carousel owl-carousel">
             {% for product in mostPopularProducts %}
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <img src="{{product.research_type.image.url}}" height="200px" width="200px">
-                        <h5 class="card-title">{{product.title}}</h5>
-                        <p>{{product.research_type}}</p>
-                        <p class="card-text">{{product.description|slice:"30"}}..</p>
-                        <a href="#" class="btn btn-primary">View</a>
-                    </div>
+                <div class="carousel-card">
+                    <img src="{{product.research_type.image.url}}">
+                    <h5>{{product.title}}</h5>
+                    <p>£{{product.price}}</p>
                 </div>
-            </div>
+
             {% endfor %}
+            </div>
         </div>
     </div>
 </div>
@@ -87,4 +81,30 @@
 </div>
 
 
+{% endblock %}
+{% block extraJS %}
+<script>
+
+$(".carousel").owlCarousel({
+margin: 20,
+loop: true,
+autoplay: true,
+autoplayTimeout: 2000,
+autoplayHoverPause: true,
+responsive: {
+0:{
+items:1,
+nav: false
+},
+600:{
+items:2,
+nav: false
+},
+1000:{
+items:3,
+nav: false
+}
+}
+});
+</script>
 {% endblock %}

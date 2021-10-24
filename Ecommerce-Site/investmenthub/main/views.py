@@ -11,10 +11,10 @@ def homepage(request):
 
     mostPopular = {}
     for item in orderItems:
-        if(item.product.title not in mostPopular.keys()):
-            mostPopular[item.product.title] = 1
+        if(item.product not in mostPopular.keys()):
+            mostPopular[item.product] = 1
         else:
-            mostPopular[item.product.title] += 1
+            mostPopular[item.product] += 1
 
     sorted(mostPopular, key=mostPopular.get)
     if len(mostPopular.keys()) > 5:
