@@ -8,9 +8,16 @@ body{
 .features-col{
     padding-bottom: 10px;
 }
+.features-contained{
+    width: 80%;
+    border-radius: 4%;
+    float:none;
+    margin:auto;
+    padding: 10px;
+}
 .colored{
     padding-top: 30px;
-    color: #42474e;
+    color: rgba(0, 123, 255, .7);
     padding-bottom: 30px;
 }
 .steps-row {
