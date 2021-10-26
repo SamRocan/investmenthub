@@ -10,7 +10,6 @@ class ResearchType(models.Model):
     slug = models.SlugField(max_length=255)
     ordering = models.IntegerField(default=0)
     color = models.CharField(max_length=255, default="rgba(0, 0, 0, 0.0)")
-    image = models.ImageField(upload_to='images/research_images/', default='images/research_images/default.png', blank=False, null=False)
 
     class Meta:
         ordering = ['ordering']

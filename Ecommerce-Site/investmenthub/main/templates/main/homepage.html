@@ -1,8 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block extra-css%}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="{% static 'homepage_style.css' %}">
 
 {% endblock %}
@@ -23,8 +21,8 @@
         <a class="btn btn-light" href="{% url 'product_search' %}">See Products</a>
     </div>
 </div>
-<div>
-    <h1 class="section-header">Categories</h1>
+<div style="background-color: #e9e6e7;">
+    <!--<h1 class="section-header" style="text-align: center">Categories</h1>-->
     <ul class="gallery">
         <li style="background: #f6bd60;"><h2 style="color:#8c6b35;">Profitability</h2></li>
         <li style="background: #f7ede2;"><h2 style="color:#948d85;">Solvency</h2></li>
@@ -38,73 +36,52 @@
         <li style="background: #f28482;"><h2 style="color:#8f4d4c;">Scenario & Sensitivity</h2></li>
     </ul>
 </div>
-<div>
-    <h1 class="section-header">New Arrivals</h1>
-    <div class="container">
-        <div class="row">
-            <div class="carousel owl-carousel">
-            {% for product in newProducts %}
-                <div class="carousel-card">
-                    <img src="{{product.research_type.image.url}}">
-                    <h5>{{product.title}}</h5>
-                    <p>£{{product.price}}</p>
-                </div>
-            {% endfor %}
-            </div>
-        </div>
+<div class="row features-row">
+    <div class="col-md features-col" style="text-align: center">
+        <i class="fas fa-user fa-7x colored"></i>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
     </div>
-    <!-- put three cards in each list item, make the cards myself -->
-</div>
-<div>
-    <h1 class="section-header">Most Popular</h1>
-    <div class="container">
-        <div class="row">
-            <div class="carousel owl-carousel">
-            {% for product in mostPopularProducts %}
-                <div class="carousel-card">
-                    <img src="{{product.research_type.image.url}}">
-                    <h5>{{product.title}}</h5>
-                    <p>£{{product.price}}</p>
-                </div>
-
-            {% endfor %}
-            </div>
-        </div>
+    <div class="col-md features-col" style="text-align: center">
+        <i class="fas fa-search fa-7x colored"></i></i>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
+    </div>
+    <div class="col-md features-col" style="text-align: center">
+        <i class="fas fa-download fa-7x colored"></i>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
     </div>
 </div>
-<div>
-    <h1 class="section-header">About Us</h1>
-    <h2 class="section-header">Email List?</h2>
+<div class="row steps-row">
+    <div class="col-md steps-col">
+        <div class="cent-wrapper">
+            <div class="number-circle">1</div>
+        </div>
+        <p style="text-align: center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
+    </div>
+    <div class="col-md info-col">
+        <div class="cent-wrapper">
+            <div class="number-circle">2</div>
+        </div>
+        <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
+    </div>
+    <div class="col-md info-col">
+        <div class="cent-wrapper">
+            <div class="number-circle"><p>3</p></div>
+        </div>
+        <p style="text-align: center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Vivamus interdum nisl quam, blandit aliquam massa condimentum vel.
+            Vestibulum et hendrerit mi.</p>
+    </div>
 </div>
-<div>
-    <h1 class="section-header">Footer</h1>
-</div>
-
-
 {% endblock %}
 {% block extraJS %}
-<script>
-
-$(".carousel").owlCarousel({
-margin: 20,
-loop: true,
-autoplay: true,
-autoplayTimeout: 2000,
-autoplayHoverPause: true,
-responsive: {
-0:{
-items:1,
-nav: false
-},
-600:{
-items:2,
-nav: false
-},
-1000:{
-items:3,
-nav: false
-}
-}
-});
-</script>
 {% endblock %}
