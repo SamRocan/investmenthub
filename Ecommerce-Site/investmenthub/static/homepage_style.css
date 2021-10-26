@@ -1,6 +1,9 @@
 body{
     background-color: #fdfdfd;
 }
+.categories{
+    background-color: #e9e6e7;
+}
 .features-row {
     min-height: 100px;
     text-align: center;
@@ -20,9 +23,20 @@ body{
     color: rgba(0, 123, 255, .7);
     padding-bottom: 30px;
 }
+
 .steps-row {
     min-height: 100px;
     text-align: center;
+}
+.steps-header{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -.5px;
+    color: #080a0d;
+    text-align: center;
+    margin-bottom: 24px;
 }
 .steps-col{
     padding-bottom: 10px;
@@ -54,7 +68,17 @@ body{
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
+.FAQ-header{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -.5px;
+    color: #080a0d;
+    text-align: center;
+    margin-bottom: 24px;
+    padding-top: 24px;
+}
 .img-wrapper {
     position: relative;
 }
@@ -92,7 +116,6 @@ body{
     text-align: center;
 }
 
-/* Product Carousel */
 .gallery {
     padding: 1rem;
     display: grid;
@@ -126,6 +149,25 @@ body{
     padding-top: 1rem;
 }
 
+.accordion{
+    width: 80%;
+    float:none;
+    margin:auto;
+    padding-bottom: 24px;
+}
+footer{
+    padding-top: 24px;
+    min-height: 200px;
+    background-color: #e9e6e7;
+    color: #6A6969;
+}
+#footer-container{
+    width: 90%;
+    float:none;
+    margin:auto;
+}
+footer .col{
+}
 @media (max-width: 768px) {
     .img-overlay .btn {
         font-size: 70%;
