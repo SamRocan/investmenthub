@@ -155,19 +155,6 @@ body{
     margin:auto;
     padding-bottom: 24px;
 }
-footer{
-    padding-top: 24px;
-    min-height: 200px;
-    background-color: #e9e6e7;
-    color: #6A6969;
-}
-#footer-container{
-    width: 90%;
-    float:none;
-    margin:auto;
-}
-footer .col{
-}
 @media (max-width: 768px) {
     .img-overlay .btn {
         font-size: 70%;
