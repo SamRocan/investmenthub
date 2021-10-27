@@ -29,7 +29,7 @@
 
         <ul class="navbar-nav ml-auto d-block d-xl-none">
             <li class="nav-item">
-                <a class="btn btn-link" href="{% url 'cart' %}" style="text-decoration: none;"><i class="fa fa-shopping-cart"></i></span> {% if cart %} ({{ cart|length }}){% endif %}</span></a>
+                <a class="btn btn-link" href="{% url 'cart' %}" style="text-decoration: none;"><i class="fa fa-shopping-cart"></i></span><strong> {% if cart %} {{ cart|length }}{% endif %}</strong></span></a>
             </li>
         </ul>
 
