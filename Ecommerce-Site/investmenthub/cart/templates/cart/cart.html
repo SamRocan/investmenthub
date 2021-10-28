@@ -1,6 +1,5 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block extra-css %}
 <link rel="stylesheet" href="{% static 'cart_style.css' %}">
 {% endblock %}
@@ -25,7 +24,7 @@
     <div id="summary">
     <strong>Total cost</strong>
     <!--<td><strong>{{ cart|length}}</strong></td>-->
-    ${{ cart.get_total_cost }}</strong>
+    £{{ cart.get_total_cost }}</strong>
     </div>
 
 {% if user.is_authenticated %}
