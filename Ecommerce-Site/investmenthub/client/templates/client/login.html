@@ -1,17 +1,22 @@
 {% extends 'main/base.html' %}
-
+{% load static %}
+{% load crispy_forms_tags %}
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'form_style.css' %}">
+<link rel="stylesheet" href="{% static 'add_product_style.css' %}">
+{% endblock %}
 {% block content %}
-<h1>Login</h1>
+<div id="outer">
+    <div id="form-area">
+        <h1>Login</h1>
+        <form id="addprod" method="post" enctype="multipart/form-data" style="margin-left: 20%;margin-right: 20%;">
+            {% csrf_token %}
 
-<form method="post" action=".">
-    {% csrf_token %}
+            {{ form|crispy }}
 
-    {{ form.as_p }}
 
-    <div>
-        <div>
-            <button>Sign In</button>
-        </div>
+            <button id="submit-button" class="btn btn-success" style="">Sign In</button>
+        </form>
     </div>
-</form>
+</div>
 {% endblock %}
