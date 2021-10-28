@@ -1,4 +1,4 @@
-from django.forms import ModelForm,TextInput, Textarea, FileField
+from django.forms import ModelForm,TextInput, Textarea, Select
 
 from .models import Product, ProductFile
 
@@ -12,11 +12,12 @@ class ProductForm(ModelForm):
                 'style': 'max-width: 300px;',
                 'placeholder': 'Name'
             }),
-            'research_type': TextInput(attrs={
-                'class': "form-control",
-                'style': 'max-width: 300px;',
-                'placeholder': 'Research Type'
-            }),
+            'research_type': Select(
+                attrs={
+                    'class': "form-select",
+                    'style': 'max-width: 300px;',
+                }
+            ),
             'slug': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',

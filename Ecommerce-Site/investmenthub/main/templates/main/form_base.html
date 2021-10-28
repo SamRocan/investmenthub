@@ -1,0 +1,9 @@
+{% load crispy_forms_tags %}
+<div class="base-form">
+    {% block form-content %}
+    {% for i in form %}
+    <p style="margin: 0px;" class="label">{{i.label}}</p>
+    <p style="margin: 0px;" class="input">{{i}}</p>
+    {% endfor %}
+    {% endblock %}
+</div>
