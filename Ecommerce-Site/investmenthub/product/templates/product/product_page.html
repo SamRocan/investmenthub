@@ -1,16 +1,25 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block extra-css%}
-<link rel="stylesheet" href="{% static 'product_home_style.css' %}">
+<link rel="stylesheet" href="{% static 'product_page_style.css' %}">
 {% endblock %}
 {% block content %}
-<h1>{{ product.title }}, ${{ product.price }}</h1>
-<p>{{ product.description }}</p>
-<form method="post" action=".">
-    {% csrf_token %}
+<div style="height: 200px; background-color: {{product.research_type.color}}; border-bottom: 1px solid black;">
+<h1 id="header-title">{{product.research_type}}</h1>
+</div>
+<img src="{{product.client.profile_picture.url}}" id="profilepic" width="100px" height="100px">
+<div id="product-break" style="border-top: 1px solid black;"></div>
+    <br>
+    <h1 class="product-heading">{{ product.title }}</h1>
+<div id="product-info">
+    <h5 class="product-heading">${{ product.price }}</h5>
+    <p class="product-info">{{ product.description }}</p>
+    <form method="post" action=".">
+        {% csrf_token %}
 
-    <div>
-    <button>Add to Cart</button>
-    </div>
-</form>
+        <div>
+        <button class="btn btn-primary" id="cart-button">Add to Cart</button>
+        </div>
+    </form>
+</div>
 {% endblock %}
