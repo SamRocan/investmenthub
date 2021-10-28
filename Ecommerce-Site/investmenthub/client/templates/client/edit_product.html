@@ -1,14 +1,21 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block extra-css%}
+<link rel="stylesheet" href="{% static 'form_style.css' %}">
+<link rel="stylesheet" href="{% static 'add_product_style.css' %}">
+
 {% endblock %}
 {% block content %}
-<h1>Edit Research</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+<div id="outer">
+    <div id="form-area">
+        <h1>Edit Research</h1>
+        <form id="addprod" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    {{ form.as_p }}
+            {% include 'main/form_base.html' %}
 
-    <button class="button is-dark is-uppercase">Submit</button>
-</form>
+            <button id="submit-button" class="btn btn-success" style="">Add Research</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

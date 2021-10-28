@@ -1,15 +1,22 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block extra-css%}
+<link rel="stylesheet" href="{% static 'form_style.css' %}">
+<link rel="stylesheet" href="{% static 'add_product_style.css' %}">
+
 {% endblock %}
 {% block content %}
-<p>Confirm you want to delete {{item}}</p>
+<div id="outer">
+    <div id="form-area">
+        <h1>Delete {{item}}?</h1>
+        <p style="text-align: center">This action is irreversible.</p>
+        <form id="addprod" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-<form action="{% url 'delete_product' item.slug %}" method="POST">
-    {% csrf_token %}
+            {% include 'main/form_base.html' %}
 
-    <a href="{% url 'client_admin' %}">Cancel</a>
-    <input type="submit" name="Confirm">
-</form>
-
+            <button id="submit-button" class="btn btn-danger" style="">Delete Research</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
