@@ -14,8 +14,9 @@
             <img src="{{item.product.client.profile_picture.url}}">
         </div>
         <div class="col-9">
-            {{item.product}}
-            {{item.total_price}}
+            <strong>{{item.product}}</strong>
+            <br>
+            £{{item.total_price}}
             <br>
             <small><a href="?remove_from_cart={{ item.id }}">Remove</a></small>
         </div>

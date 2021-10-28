@@ -3,6 +3,7 @@
     background-color: rgba(60,85,99, 0.2);
     padding: 10px;
     border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .item-card a{
     text-decoration: none;
@@ -23,7 +24,6 @@
 #summary{
     text-align: center;
     padding-bottom: 20px;
-
 }
 #paypal-button-container{
     text-align: center;
