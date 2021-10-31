@@ -8,51 +8,216 @@
 
 {% endblock %}
 {% block content %}
-<div class="container-fluid overflow-hidden">
-    <div class="row vh-100 overflow-auto">
-        <div class="col-12 col-lg-3 col-xl-2 px-lg-2 px-0 bg-dark d-flex sticky-top">
-            <div class="d-flex flex-lg-column flex-row flex-grow-1 align-items-center align-items-lg-start px-3 pt-2 text-white">
-                <ul class="nav nav-pills flex-lg-column flex-row flex-nowrap flex-shrink-1 flex-lg-grow-0 flex-grow-1 mb-lg-auto mb-0 justify-content-center align-items-center align-items-lg-start" id="menu">
-                    <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-lg-0 px-2" id="dashboard-but">
-                            <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-lg-inline">Dashboard</span> </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-lg-0 px-2" id="orders-but">
-                            <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-lg-inline">Orders</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-lg-0 px-2" id="products-but">
-                            <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-lg-inline">Products</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-lg-0 px-2" id="customers-but">
-                            <i class="fs-5 bi-cash-coin"></i><span class="ms-1 d-none d-lg-inline">Financials</span> </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="nav-link px-lg-0 px-2" id="settings-but">
-                            <i class="fs-5 bi-gear"></i><span class="ms-1 d-none d-lg-inline">Settings</span>
-                        </a>
-                    </li>
-                </ul>
+<div class="container-fluid consistent" id="first-row">
+    <br>
+    <h1>Dashboard</h1>
+    <br>
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card text-black">
+                <div class="card-info">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-square fa-stack-2x" style="color: #4aa0b5"></i>
+                      <i class="fas fa-tags fa-stack-1x" style="color: white"></i>
+                    </span>
+                    <div class="info-container">
+                        <span>Products</span>
+                        <br>
+                        <span><strong>24</strong></span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col d-flex flex-column">
-            <main class="row overflow-auto" id="main-1">
-                {% include 'client/client_admin_tabs/Dashboard.html' %}
-            </main>
-            <main class="row overflow-auto" id="main-2" style="display:none;">
-                {% include 'client/client_admin_tabs/Orders.html' %}
-            </main>
-            <main class="row overflow-auto" id="main-3" style="display:none;">
-                {% include 'client/client_admin_tabs/Products.html' %}
-            </main>
-            <main class="row overflow-auto" id="main-4" style="display:none;">
-                {% include 'client/client_admin_tabs/Financials.html' %}
-            </main>
-            <main class="row overflow-auto" id="main-5" style="display:none;">
-                {% include 'client/client_admin_tabs/Settings.html' %}
-            </main>
+        <div class="col-lg-3  col-sm-6">
+            <div class="card text-black">
+                <div class="card-info">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-square fa-stack-2x" style="color: #cb444a"></i>
+                      <i class="fas fa-download fa-stack-1x" style="color: white"></i>
+                    </span>
+                    <div class="info-container">
+                        <span>Downloads</span>
+                        <br>
+                        <span><strong>573</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card text-black">
+                <div class="card-info">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-square fa-stack-2x" style="color: #53a351"></i>
+                      <i class="fas fa-money-bill-alt fa-stack-1x"  style="color: white"></i>
+                    </span>
+                    <div class="info-container">
+                        <span>Revenue</span>
+                        <br>
+                        <span><strong>£100,000</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card text-black">
+                <div class="card-info">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-square fa-stack-2x" style="color: #fdcc2e"></i>
+                      <i class="fas fa-fire fa-stack-1x" style="color: white"></i>
+                    </span>
+                    <div class="info-container">
+                        <span>Most Popular</span>
+                        <br>
+                        <span><strong>App Name</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="second-row">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-black" style="text-align: center">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="card-body" style="background-color: #f7f7f7">
+                    <div class="container-fluid" style="text-align: center">
+                        <div class="row stats">
+                            <div class="col-md-4">
+                                <p style="color: forestgreen">
+                                    +17%
+                                </p>
+                                <p>
+                                    <strong>$35,210.43</strong>
+                                </p>
+                                <p>
+                                    TOTAL REVENUE
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p style="color: forestgreen">
+                                    +17%
+                                </p>
+                                <p>
+                                    <strong>$35,210.43</strong>
+                                </p>
+                                <p>
+                                    TOTAL REVENUE
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p style="color: forestgreen">
+                                    +17%
+                                </p>
+                                <p>
+                                    <strong>$35,210.43</strong>
+                                </p>
+                                <p>
+                                    TOTAL REVENUE
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container-fluid consistent" id="third-row">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card text-black mb-3" >
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">Products</h5>
+                    <table style="text-align: center">
+                        <tr style="background-color: #4aa0b5; color: white;">
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-black mb-3" >
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid consistent" id="fourth-row">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-black mb-3" >
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card text-black mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title" style="text-align: center">Products</h5>
+                    <table style="text-align: center">
+                        <tr style="background-color: #4aa0b5; color: white;">
+                            <th>Company</th>
+                            <th>Contact</th>
+                            <th>Country</th>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
