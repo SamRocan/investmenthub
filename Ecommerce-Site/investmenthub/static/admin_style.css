@@ -17,6 +17,9 @@ body {
 .card-info{
     display: flex;
 }
+.card-title{
+    text-align: center
+}
 .info-container{
     margin-top: auto;
     margin-bottom: auto;

@@ -67,6 +67,17 @@ class ChartData(APIView):
     def get(self, request, format = None):
         client = request.user.client
         orders = client.orders.all()
+        items = client.items.all()
+        itemAdded = []
+        itemCount = []
+        for i in items:
+            if(i.product.title in itemAdded):
+                x = itemAdded.index(i.product.title)
+                itemCount[x] +=1
+            else:
+                itemAdded.append(i.product.title[0:20]+"...")
+                itemCount.append(1)
+
         dates = []
         paid = []
         for order in orders:
@@ -82,7 +93,9 @@ class ChartData(APIView):
             'colorPaletteBoarder':colorPaletteBoarder,
             'colorPalette':colorPalette,
             'dates':dates,
-            'paid':paid
+            'paid':paid,
+            'product':itemAdded,
+            'productCount':itemCount
         }
         return Response(data)
 

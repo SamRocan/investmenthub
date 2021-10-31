@@ -79,10 +79,12 @@
 <div class="container-fluid" id="second-row">
     <div class="row">
         <div class="col-md-12">
-            <div class="card text-black" style="text-align: center">
+            <div class="card text-black">
                 <div class="card-body">
                     <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text" style="text-align: center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <canvas id="graphCanvas">
+                    </canvas>
                 </div>
                 <div class="card-body" style="background-color: #f7f7f7">
                     <div class="container-fluid" style="text-align: center">
@@ -133,7 +135,7 @@
         <div class="col-md-8">
             <div class="card text-black mb-3" >
                 <div class="card-body">
-                    <h5 class="card-title" style="text-align: center">Products</h5>
+                    <h5 class="card-title">Products</h5>
                     <table style="text-align: center">
                         <tr style="background-color: #4aa0b5; color: white;">
                             <th>Company</th>
@@ -154,8 +156,11 @@
         <div class="col-md-4">
             <div class="card text-black mb-3" >
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Order Breakdown</h5>
+                    <div style="width: 100%; height: 100%;">
+                        <canvas id="doughnutCanvas">
+                        </canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,6 +234,7 @@
         url: endpoint,
         success: function(data) {
             drawLineGraph(data, 'graphCanvas');
+            drawDoughnut(data, 'doughnutCanvas')
 
         },
         error: function(error_data) {
@@ -301,37 +307,35 @@
             }
         });
     }
-    function drawPieGraph(data, id) {
+    function drawDoughnut(data, id){
         var colorPalette = data.colorPalette
         var colorPaletteBoarder = data.colorPaletteBoarder
-        var labels = data.dates;
-        var chartData = data.paid;
+        var labels = data.product;
+        var chartData = data.productCount;
         var ctx = document.getElementById(id).getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'pie',
+            type: 'doughnut',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: labels,
+                    label: "Hello",
                     data: chartData,
-                    backgroundColor:colorPalette,
-                    borderColor:colorPaletteBoarder,
-                    borderWidth: 1
+                    backgroundColor: colorPalette,
+                    borderColor: colorPaletteBoarder,
+                    borderWidth: 2
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Chart.js Pie Chart'
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding:{
+                        left: 30,
+                        right: 30
                     }
                 }
-            },
+            }
         });
     }
 </script>
