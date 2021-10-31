@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block extra-css%}
 <link rel="stylesheet" href="{% static 'product_page_style.css' %}">
 {% endblock %}
@@ -12,7 +13,7 @@
     <br>
     <h1 class="product-heading">{{ product.title }}</h1>
 <div id="product-info">
-    <h5 class="product-heading">${{ product.price }}</h5>
+    <h5 class="product-heading">${{ product.price|intcomma }}</h5>
     <p class="product-info">{{ product.description }}</p>
     <form method="post" action=".">
         {% csrf_token %}

@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load humanize %}
 {% load product_extra %}
 {% block extra-css%}
 <link rel="stylesheet" href="{% static 'product_search_style.css' %}">
@@ -32,7 +33,7 @@
                 <small>{{product.date_added.date}}</small>
             </td>
             <td><p>{{product.client}}</p></td>
-            <td><p>£{{product.price}}</p></td>
+            <td><p>£{{product.price|intcomma}}</p></td>
             <td><p style="background-color:{{ product.research_type.color }}; border-radius: 5px">{{product.research_type}}</p></td>
         </tr>
         {% endfor %}
