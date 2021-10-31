@@ -49,13 +49,14 @@ def client_admin(request):
 
 
     products = ProductsFilter.qs
+    #top 5 products
     orders = OrdersFilter.qs
     context = {
         'products':products,
         'productCount':noOfProducts,
         'orders':orders,
         'revenue':revenue,
-        'noOfOrders':noOfOrders,
+        'orderCount':noOfOrders,
         'ProductsFilter':ProductsFilter,
         'OrdersFilter':OrdersFilter,
     }
