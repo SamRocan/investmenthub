@@ -49,9 +49,12 @@ def client_admin(request):
     OrdersFilter = OrderFilter(request.GET, queryset=orders)
 
 
-    products = ProductsFilter.qs
+    #products = ProductsFilter.qs
     #top 5 products
-    orders = OrdersFilter.qs
+    #orders = OrdersFilter.qs
+    if(len(OrdersFilter.data)!=0):
+        dateRange = OrdersFilter.data['date_range']
+        request.session['token'] = dateRange
     context = {
         'products':products,
         'productCount':noOfProducts,
@@ -69,6 +72,7 @@ class ChartData(APIView):
 
         client = request.user.client
         orders = client.orders.all()
+        dateRange = request.session['token']
         items = client.items.all()
         itemAdded = []
         itemCount = []
@@ -88,9 +92,19 @@ class ChartData(APIView):
                 dates[str(order.created_at.date())] += int(order.paid_amount)
                 total += 1
 
-
-        paid = list(dates.values())[-30:]
-        dates = list(dates.keys())[-30:]
+        dr = 30
+        if dateRange == 'today':
+            dr=1
+        elif dateRange == 'yesterday':
+            dr=2
+        elif dateRange == 'week':
+            dr=7
+        elif dateRange == 'month':
+            dr=30
+        elif dateRange == 'year':
+            dr=365
+        paid = list(dates.values())[-dr:]
+        dates = list(dates.keys())[-dr:]
         colorPalette = generate_color_palette(total)
         colorPaletteBoarder = generate_color_palette_boarder(total)
         data = {
@@ -99,7 +113,7 @@ class ChartData(APIView):
             'dates':dates,
             'paid':paid,
             'product':itemAdded,
-            'productCount':itemCount
+            'productCount':itemCount,
         }
         return Response(data)
 

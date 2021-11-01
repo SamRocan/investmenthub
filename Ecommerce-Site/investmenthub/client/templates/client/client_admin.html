@@ -86,6 +86,11 @@
                     <canvas id="graphCanvas">
                     </canvas>
                 </div>
+                    <form method="get" class="center-form">
+                        {{OrdersFilter.form|crispy}}
+                        <button class="btn-sm btn-primary" type="submit">Search</button>
+                        <!--<input placeholder="Search Your Analysis" style="width: 100%; text-align: center">-->
+                    </form>
                 <div class="card-body" style="background-color: #f7f7f7">
                     <div class="container-fluid" style="text-align: center">
                         <div class="row stats">
