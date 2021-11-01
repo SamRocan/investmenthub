@@ -11,8 +11,8 @@ from cart.cart import Cart
 
 def product_home(request):
     products = Product.objects.all()
-    if request.method == "POST":
-        prodQuery = request.POST["product_searcher"]
+    if request.method == "GET":
+        prodQuery = request.GET.get('product_searcher')
         products = Product.objects.filter(title__contains=prodQuery)
         myFilter = ProductFilter(request.GET, queryset=products)
     else:

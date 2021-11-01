@@ -33,8 +33,8 @@
             </li>
         </ul>
 
-        <div class="collapse navbar-collapse">
-            <form class="form-inline my-2 my-xl-0 mx-auto" method="post" action="{% url 'product_search' %}">
+        <div class="collapse navbar-collapse">s
+            <form class="form-inline my-2 my-xl-0 mx-auto" method="get" action="{% url 'product_search' %}" value="{{request.GET.product_searcher}}">
                 {% csrf_token %}
                 <div class="input-group">
                     <input class="form-control" name="product_searcher" type="search" placeholder="Search for products..." aria-label="Search">
