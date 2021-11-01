@@ -14,8 +14,11 @@
 
             {% include 'main/form_base.html' %}
 
-            <button id="submit-button" class="btn btn-success" style="">Add Research</button>
+            <button id="submit-button" class="btn btn-success">Update</button>
         </form>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="{% url 'delete_product' product.slug %}" class="btn btn-danger" style="">Delete</a>
+        </div>
     </div>
 </div>
 {% endblock %}

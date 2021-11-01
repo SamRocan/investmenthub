@@ -132,7 +132,7 @@ def edit_product(request, product_slug):
             form = ProductForm(instance=product)
 
 
-    return render(request, 'client/edit_product.html', {'form':form})
+    return render(request, 'client/edit_product.html', {'form':form, 'product':product})
 
 def delete_product(request, product_slug):
     product = Product.objects.get(slug=product_slug)
