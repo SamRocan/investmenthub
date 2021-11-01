@@ -13,6 +13,8 @@ def product_home(request):
     products = Product.objects.all()
     if request.method == "GET":
         prodQuery = request.GET.get('product_searcher')
+        if(prodQuery == None):
+            prodQuery = ''
         products = Product.objects.filter(title__contains=prodQuery)
         myFilter = ProductFilter(request.GET, queryset=products)
     else:
