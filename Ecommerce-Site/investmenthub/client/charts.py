@@ -1,4 +1,6 @@
 # util/charts.py
+from calendar import monthrange
+from datetime import date
 
 months = [
     'January', 'February', 'March', 'April',
@@ -17,6 +19,29 @@ def get_year_dict():
         year_dict[month] = 0
 
     return year_dict
+
+def yearDict(year, month, day):
+    calender = dict()
+    x=1
+    i=1
+    while(x<=month):
+        info = monthrange(year, x)
+        for i in range(1,info[1]+1):
+            if(len(str(i))==1):
+                calender[str(year)+"-"+str(x)+"-0"+str(i)] = 0
+            else:
+                calender[str(year)+"-"+str(x)+"-"+str(i)] = 0
+            if(x==month and i==day):
+                break
+        x+=1
+    return calender
+
+def currentDaysOfYear():
+    today = date.today()
+    d = today.timetuple()
+
+    calender = yearDict(d.tm_year, d.tm_mon, d.tm_mday)
+    return calender
 
 
 def generate_color_palette(amount):

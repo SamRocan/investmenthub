@@ -5,10 +5,11 @@ from django.contrib.auth import login
 from .forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .charts import get_year_dict, generate_color_palette, generate_color_palette_boarder
+from .charts import currentDaysOfYear, generate_color_palette, generate_color_palette_boarder
 from .models import Client
 from product.models import Product
 from product.forms import ProductForm
@@ -65,6 +66,7 @@ def client_admin(request):
 class ChartData(APIView):
 
     def get(self, request, format = None):
+
         client = request.user.client
         orders = client.orders.all()
         items = client.items.all()
@@ -78,17 +80,19 @@ class ChartData(APIView):
                 itemAdded.append(i.product.title[0:20]+"...")
                 itemCount.append(1)
 
-        dates = []
-        paid = []
+
+        total = 0
+        dates = currentDaysOfYear()
         for order in orders:
-            if(str(order.created_at.date()) in dates):
-                index = dates.index(str(order.created_at.date()))
-                paid[index]+=int(order.paid_amount)
-            else:
-                dates.append(str(order.created_at.date()))
-                paid.append(int(order.paid_amount))
-        colorPalette = generate_color_palette(len(paid))
-        colorPaletteBoarder = generate_color_palette_boarder(len(paid))
+            if(str(order.created_at.date()) in dates.keys()):
+                dates[str(order.created_at.date())] += int(order.paid_amount)
+                total += 1
+
+
+        paid = list(dates.values())[-30:]
+        dates = list(dates.keys())[-30:]
+        colorPalette = generate_color_palette(total)
+        colorPaletteBoarder = generate_color_palette_boarder(total)
         data = {
             'colorPaletteBoarder':colorPaletteBoarder,
             'colorPalette':colorPalette,
