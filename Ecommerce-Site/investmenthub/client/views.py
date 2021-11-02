@@ -93,7 +93,9 @@ def client_admin(request):
     productsSorted = {k: v for k, v in sorted(mostPop.items(), reverse=True, key=lambda x: x[1])}
 
     mostPopProduct = list(productsSorted.keys())[0]
-    mostPopProduct = mostPopProduct[0:20]+"..."
+    mostPopProduct = mostPopProduct[0:20]
+
+    mostPopProduct = mostPopProduct[0:mostPopProduct.rfind(" ")]+" ..."
     if(len(OrdersFilter.data)!=0):
         dateRange = OrdersFilter.data['date_range']
         request.session['token'] = dateRange
