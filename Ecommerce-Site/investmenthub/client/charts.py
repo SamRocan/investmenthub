@@ -1,6 +1,6 @@
 # util/charts.py
 from calendar import monthrange
-from datetime import date
+from datetime import date, datetime, timedelta
 
 months = [
     'January', 'February', 'March', 'April',
@@ -43,6 +43,32 @@ def currentDaysOfYear():
     calender = yearDict(d.tm_year, d.tm_mon, d.tm_mday)
     return calender
 
+def getDateRange(dRange):
+    tod = date.today()
+    d = timedelta(days = dRange)
+    a = tod - d
+    delta = tod - a       # as timedelta
+    dates = []
+    for i in range(delta.days + 1):
+        day = a + timedelta(days=i)
+        dates.append(day)
+    return dates
+
+def getSoldCountAndRevenue(orders, rng):
+    sCount = 0
+    rCount = 0
+    for i in orders:
+        if(i.created_at.date() in rng):
+            sCount+=1
+            rCount+=i.paid_amount
+    return [sCount, rCount]
+
+def getProductAddedCount(products, rng):
+    pAddedCount = 0
+    for i in products:
+        if(i.date_added.date() in rng):
+            pAddedCount+=1
+    return pAddedCount
 
 def generate_color_palette(amount):
     palette = []

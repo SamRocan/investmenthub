@@ -5,13 +5,12 @@ from django.contrib.auth import login
 from .forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage
-
-
+from datetime import date
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .charts import currentDaysOfYear, generate_color_palette, generate_color_palette_boarder
+from .charts import currentDaysOfYear, getDateRange, getSoldCountAndRevenue, getProductAddedCount, generate_color_palette, generate_color_palette_boarder
 from .models import Client
 from product.models import Product
 from product.forms import ProductForm
@@ -94,10 +93,48 @@ def client_admin(request):
 
     mostPopProduct = list(productsSorted.keys())[0]
     mostPopProduct = mostPopProduct[0:20]
-
     mostPopProduct = mostPopProduct[0:mostPopProduct.rfind(" ")]+" ..."
+    soldCount = orders.count
+    revenueCount= revenue
+    addedCount = products.count
     if(len(OrdersFilter.data)!=0):
         dateRange = OrdersFilter.data['date_range']
+        if dateRange == 'today':
+            soldCount = 0
+            revenueCount = 0
+            addedCount = 0
+            for i in orders:
+                if(i.created_at.date() == date.today()):
+                    soldCount+=1
+                    revenueCount+=i.paid_amount
+            for i in products:
+                if(i.date_added.date() == date.today()):
+                    addedCount+=1
+        if dateRange == 'yesterday':
+            rng = getDateRange(2)
+            sr = getSoldCountAndRevenue(orders, rng)
+            soldCount = sr[0]
+            revenueCount = sr[1]
+            addedCount = getProductAddedCount(products, rng)
+        if dateRange == 'week':
+            rng = getDateRange(7)
+            sr = getSoldCountAndRevenue(orders, rng)
+            soldCount = sr[0]
+            revenueCount = sr[1]
+            addedCount = getProductAddedCount(products, rng)
+        if dateRange == 'month':
+            rng = getDateRange(30)
+            sr = getSoldCountAndRevenue(orders, rng)
+            soldCount = sr[0]
+            revenueCount = sr[1]
+            addedCount = getProductAddedCount(products, rng)
+        if dateRange == 'year':
+            rng = getDateRange(365)
+            sr = getSoldCountAndRevenue(orders, rng)
+            soldCount = sr[0]
+            revenueCount = sr[1]
+            addedCount = getProductAddedCount(products, rng)
+
         request.session['token'] = dateRange
     context = {
         'products':products,
@@ -109,6 +146,9 @@ def client_admin(request):
         'orderCount':noOfOrders,
         'ProductsFilter':ProductsFilter,
         'OrdersFilter':OrdersFilter,
+        'soldCount':soldCount,
+        'revenueCount':revenueCount,
+        'addedCount':addedCount
     }
     return render(request, 'client/client_admin.html', context)
 
