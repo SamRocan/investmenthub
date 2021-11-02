@@ -1,11 +1,51 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
+{% load humanize %}
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'client_orders_style.css' %}">
+{% endblock %}
 {% block content %}
 <div class='mt-5 pt-5 ml-5 pl-5'>
-    {% for order in orders %}
-    <p>{{ order }}</p>
-    {% endfor %}
+    <table style="text-align: center">
+        <tr style="background-color: #4aa0b5; color: white;">
+            <th>Order No.</th>
+            <th>Amount</th>
+            <th></th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>#{{order.id}}</td>
+            <td>£{{order.paid_amount|intcomma}}</td>
+            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{order.id}}">
+                View
+            </button></td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop{{order.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align: center">
+                        <h5 class="modal-title" id="staticBackdropLabel">Order #{{order.id}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="text-align: center">
+                        {% for x in order.items.all %}
+                        {% if x.client == user.client %}
+                        <hr>
+                        <p>{{x.client}}</p>
+                        <p>{{x.product}}</p>
+                        <p>£{{x.price|intcomma}}</p>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </table>
 </div>
 
 <!-- Pagination -->

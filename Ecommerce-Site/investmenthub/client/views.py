@@ -50,7 +50,7 @@ def client_products(request, page=1):
 def client_orders(request, page=1):
     client = request.user.client
     orders = client.orders.all()
-    paginator = Paginator(orders, 1)
+    paginator = Paginator(orders, 3)
 
     try:
         orders = paginator.page(page)
