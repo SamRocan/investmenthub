@@ -34,6 +34,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'client/register.html', {'form':form})
 
+@login_required
 def client_products(request, page=1):
     client = request.user.client
     products = client.products.all()
@@ -48,7 +49,7 @@ def client_products(request, page=1):
 
     return render(request, 'client/client_products.html', {'products':products,
                                                            'ProductsFilter':ProductsFilter})
-
+@login_required
 def client_orders(request, page=1):
     client = request.user.client
     orders = client.orders.all()
@@ -184,6 +185,7 @@ def edit_product(request, product_slug):
 
     return render(request, 'client/edit_product.html', {'form':form, 'product':product})
 
+@login_required
 def delete_product(request, product_slug):
     product = Product.objects.get(slug=product_slug)
     if request.method == 'POST':
