@@ -13,7 +13,9 @@ body {
     margin-left: -10px;
     margin-bottom: 8px;
 }
-
+.card-body{
+    margin-bottom: 7%;
+}
 .card-info{
     display: flex;
 }
@@ -40,9 +42,10 @@ body {
 .stats p{
     line-height: 8px;
 }
+
 table{
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 table, th, td {
     padding: 10px;

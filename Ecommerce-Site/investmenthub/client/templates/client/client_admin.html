@@ -155,6 +155,10 @@
                         </tr>
                         {% endfor %}
                     </table>
+                    <div class="card-buttons" style="text-align: center">
+                        <a href="{% url 'client_products' 1 %}" class="btn btn-primary " style="text-align: center">View All</a>
+                        <a href="{% url 'add_product'%}" class="btn btn-success " style="text-align: center">Add more</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,6 +229,9 @@
                         </div>
                         {% endfor %}
                     </table>
+                    <div class="card-buttons" style="text-align: center">
+                        <a href="{% url 'client_orders' 1 %}" class="btn btn-primary" style="text-align: center">View All</a>
+                    </div>
                 </div>
             </div>
         </div>

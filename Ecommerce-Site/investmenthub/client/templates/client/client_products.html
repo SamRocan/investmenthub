@@ -52,5 +52,8 @@
         <a class="page-link" href="{% if products.has_next %} {% url 'client_products' products.next_page_number %} {% endif %}">Next</a>
     </li>
 </div>
+<div style="text-align: center; padding-top: 10px">
+    <a href="{% url 'client_admin' %}" class="btn btn-primary">Back to Admin</a>
+</div>
 <!-- END Pagination -->
 {% endblock %}
