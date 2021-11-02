@@ -1,11 +1,17 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% load humanize %}
+{% load crispy_forms_tags %}
 {% block extra-css %}
 <link rel="stylesheet" href="{% static 'client_orders_style.css' %}">
 {% endblock %}
 {% block content %}
 <div class='mt-5 pt-5 ml-5 pl-5'>
+    <form method="get" class="center-form">
+        {{OrdersFilter.form}}
+        <button class="btn-sm btn-primary" type="submit">Search</button>
+        <!--<input placeholder="Search Your Analysis" style="width: 100%; text-align: center">-->
+    </form>
     <table style="text-align: center">
         <tr style="background-color: #4aa0b5; color: white;">
             <th>Order No.</th>

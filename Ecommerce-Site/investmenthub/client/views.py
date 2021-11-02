@@ -37,27 +37,31 @@ def register(request):
 def client_products(request, page=1):
     client = request.user.client
     products = client.products.all()
-    paginator = Paginator(products, 3)
+    ProductsFilter = UserProductFilter(request.GET, queryset=products)
 
+    paginator = Paginator(ProductsFilter.qs, 3)
     try:
         products = paginator.page(page)
     except EmptyPage:
         # if we exceed the page limit we return the last page
         products = paginator.page(paginator.num_pages)
 
-    return render(request, 'client/client_products.html', {'products':products})
+    return render(request, 'client/client_products.html', {'products':products,
+                                                           'ProductsFilter':ProductsFilter})
 
 def client_orders(request, page=1):
     client = request.user.client
     orders = client.orders.all()
-    paginator = Paginator(orders, 3)
+    OrdersFilter = OrderFilter(request.GET, queryset=orders)
 
+    paginator = Paginator(OrdersFilter.qs, 3)
     try:
         orders = paginator.page(page)
     except EmptyPage:
     # if we exceed the page limit we return the last page
         orders = paginator.page(paginator.num_pages)
-    return render(request, 'client/client_orders.html', {'orders':orders})
+    return render(request, 'client/client_orders.html', {'orders':orders,
+                                                         'OrdersFilter':OrdersFilter})
 
 
 @login_required
