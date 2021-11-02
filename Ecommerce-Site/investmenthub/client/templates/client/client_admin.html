@@ -69,7 +69,7 @@
                     <div class="info-container">
                         <span>Most Popular</span>
                         <br>
-                        <span><strong>App Name</strong></span>
+                        <span><strong>{{mostPopProduct}}</strong></span>
                     </div>
                 </div>
             </div>
@@ -177,15 +177,52 @@
 </div>
 <div class="container-fluid consistent" id="fourth-row">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="card text-black mb-3" >
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Most Popular Products</h5>
+                    <table style="text-align: center">
+                        <tr style="background-color: #4aa0b5; color: white;">
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Downloads</th>
+                        </tr>
+                        {% for key, value in productsSorted.items %}
+                        <tr>
+                            <td>#{{forloop.counter}}</td>
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop{{order.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="text-align: center">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Order #{{order.id}}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="text-align: center">
+                                        {% for x in order.items.all %}
+                                        {% if x.client == user.client %}
+                                        <hr>
+                                        <p>{{x.client}}</p>
+                                        <p>{{x.product}}</p>
+                                        <p>£{{x.price|intcomma}}</p>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
             <div class="card text-black mb-3">
                 <div class="card-body">
                     <h5 class="card-title" style="text-align: center">Orders</h5>

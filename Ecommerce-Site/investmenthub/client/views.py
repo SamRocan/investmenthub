@@ -71,7 +71,7 @@ def client_admin(request):
     products = client.products.all()
     noOfProducts = client.products.count()
     orders = client.orders.all()
-
+    items = client.items.all()
     revenue = 0
     for order in orders:
         revenue += order.paid_amount
@@ -82,15 +82,26 @@ def client_admin(request):
     OrdersFilter = OrderFilter(request.GET, queryset=orders)
 
 
-    #products = ProductsFilter.qs
     #top 5 products
-    #orders = OrdersFilter.qs
+    mostPop = {}
+    for product in products:
+        mostPop[product.title] = 0
+
+    for item in items:
+        mostPop[item.product.title] += 1
+
+    productsSorted = {k: v for k, v in sorted(mostPop.items(), reverse=True, key=lambda x: x[1])}
+
+    mostPopProduct = list(productsSorted.keys())[0]
+    mostPopProduct = mostPopProduct[0:20]+"..."
     if(len(OrdersFilter.data)!=0):
         dateRange = OrdersFilter.data['date_range']
         request.session['token'] = dateRange
     context = {
         'products':products,
         'productCount':noOfProducts,
+        'productsSorted':productsSorted,
+        'mostPopProduct':mostPopProduct,
         'orders':orders,
         'revenue':revenue,
         'orderCount':noOfOrders,
