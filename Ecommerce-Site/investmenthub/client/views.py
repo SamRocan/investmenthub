@@ -4,6 +4,8 @@ from django.contrib.auth import login
 #from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage
+
 
 
 from rest_framework.views import APIView
@@ -31,6 +33,32 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'client/register.html', {'form':form})
+
+def client_products(request, page=1):
+    client = request.user.client
+    products = client.products.all()
+    paginator = Paginator(products, 3)
+
+    try:
+        products = paginator.page(page)
+    except EmptyPage:
+        # if we exceed the page limit we return the last page
+        products = paginator.page(paginator.num_pages)
+
+    return render(request, 'client/client_products.html', {'products':products})
+
+def client_orders(request, page=1):
+    client = request.user.client
+    orders = client.orders.all()
+    paginator = Paginator(orders, 1)
+
+    try:
+        orders = paginator.page(page)
+    except EmptyPage:
+    # if we exceed the page limit we return the last page
+        orders = paginator.page(paginator.num_pages)
+    return render(request, 'client/client_orders.html', {'orders':orders})
+
 
 @login_required
 def client_admin(request):

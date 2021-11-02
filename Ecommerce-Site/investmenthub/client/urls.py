@@ -5,6 +5,8 @@ from .forms import UserLoginForm
 from . import views
 urlpatterns = [
     path('client_admin/', views.client_admin, name='client_admin'),
+    path('client_admin/orders/<int:page>/', views.client_orders, name='client_orders'),
+    path('client_admin/products/<int:page>/', views.client_products, name='client_products'),
     path('client_admin/add_product', views.add_product, name='add_product'),
     path('client_admin/edit_product/<slug:product_slug>', views.edit_product, name='edit_product'),
     path('client_admin/delete_product/<slug:product_slug>', views.delete_product, name='delete_product'),
