@@ -31,7 +31,9 @@
 {% if user.is_authenticated %}
 <div id="paypal-button-container"></div>
 {% else %}
-<a href="{% url 'login' %}">Please login to checkout</a>
+    <div style="text-align:center;">
+        <a href="{% url 'login' %}" class="btn btn-primary">Login to Checkout</a>
+    </div>
 {% endif %}
 
 <!-- Include the PayPal JavaScript SDK -->
@@ -83,7 +85,7 @@
 
 </script>
 {% else %}
-<p>You don't have any products in your cart!</p>
+<p style="text-align: center">You don't have any products in your cart!</p>
 {% endif %}
 </div>
 {% endblock %}
