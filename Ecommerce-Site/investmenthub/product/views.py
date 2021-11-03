@@ -11,7 +11,9 @@ from cart.cart import Cart
 
 def product_home(request):
     products = Product.objects.all()
-    if(request.method == 'GET' and len(request.GET) != 0):
+    if(request.method == 'GET' and len(request.GET) != 4):
+        print(request.method)
+        print(len(request.GET))
         prodQuery = request.GET['main_search']
         if(prodQuery == None):
             prodQuery = ''
