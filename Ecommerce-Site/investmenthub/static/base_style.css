@@ -295,16 +295,17 @@ footer a:hover {
     .form-inline .form-control {
         width: 600px;
     }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .sub-menu {
-        padding: 0 1rem;
+    .main-menu{
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
     }
-
-    .sub-menu.navbar-expand-md .navbar-nav .nav-link {
-        padding: 1rem 1.5rem;
+}
+@media (min-width: 1400px) {
+    .main-menu{
+        margin-left: auto;
+        margin-right: auto;
+        width:110%;
     }
 }
 
