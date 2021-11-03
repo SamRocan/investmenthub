@@ -281,6 +281,12 @@ footer a:hover {
     .form-inline .form-control {
         width: 210px;
     }
+    .sub-menu {
+        padding: 0 1rem;
+
+    .sub-menu.navbar-expand-md .navbar-nav .nav-link {
+        padding: 1rem 1.5rem;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -289,28 +295,37 @@ footer a:hover {
         width: 440px;
     }
 }
+@media (min-width: 768px){
+    #sidebar {
+        width: 50%;
+    }
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .form-inline .form-control {
-        width: 600px;
+        width: 500px;
     }
     .main-menu{
         margin-left: auto;
         margin-right: auto;
         width:100%;
     }
+    #sidebar {
+        width: 40%;
+    }
 }
 @media (min-width: 1400px) {
+    .form-inline .form-control {
+        width: 600px;
+    }
     .main-menu{
         margin-left: auto;
         margin-right: auto;
         width:110%;
     }
-}
-
-@media (min-width: 768px){
     #sidebar {
-        width: 50%;
+        width: 30%;
     }
 }
+
