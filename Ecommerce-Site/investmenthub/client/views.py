@@ -90,10 +90,13 @@ def client_admin(request):
         mostPop[item.product.title] += 1
 
     productsSorted = {k: v for k, v in sorted(mostPop.items(), reverse=True, key=lambda x: x[1])}
-
-    mostPopProduct = list(productsSorted.keys())[0]
-    mostPopProduct = mostPopProduct[0:20]
-    mostPopProduct = mostPopProduct[0:mostPopProduct.rfind(" ")]+" ..."
+    print(len(productsSorted))
+    if(len(productsSorted)!=0):
+        mostPopProduct = list(productsSorted.keys())[0]
+        mostPopProduct = mostPopProduct[0:20]
+        mostPopProduct = mostPopProduct[0:mostPopProduct.rfind(" ")]+" ..."
+    else:
+        mostPopProduct="N/A"
     soldCount = orders.count
     revenueCount= revenue
     addedCount = products.count

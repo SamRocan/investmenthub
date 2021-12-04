@@ -12,15 +12,15 @@ from cart.cart import Cart
 def product_home(request):
     products = Product.objects.all()
     if(request.method == 'GET' and len(request.GET) != 4):
-        print(request.method)
-        print(len(request.GET))
-        prodQuery = request.GET['main_search']
+        try:
+            prodQuery = request.GET['main_search']
+        except:
+            prodQuery = ''
         if(prodQuery == None):
             prodQuery = ''
         products = Product.objects.filter(title__contains=prodQuery)
         myFilter = ProductFilter(request.GET, queryset=products)
     else:
-
         myFilter = ProductFilter(request.GET, queryset=products)
         products = myFilter.qs
 
