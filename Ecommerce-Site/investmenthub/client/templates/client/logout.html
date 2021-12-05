@@ -1,5 +1,17 @@
 {% extends 'main/base.html' %}
-
+{% load static %}
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'form_style.css' %}">
+<link rel="stylesheet" href="{% static 'add_product_style.css' %}">
+{% endblock %}
 {% block content %}
-<h1>You Have Logged out</h1>
+<div id="outer">
+    <div id="form-area" style="background-color: #37596b">
+        <h1 style="color: white">You Have Logged out</h1>
+        <img src="{% static 'images/logout.png' %}" width="100%">
+        <div style="text-align: center">
+            <a class="btn btn-primary">Log back in</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
