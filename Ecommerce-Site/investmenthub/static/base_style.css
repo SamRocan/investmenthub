@@ -53,6 +53,7 @@
 
 .navbar {
     padding: 1rem;
+    max-width: 100vw;
 }
 
 .main-menu {
