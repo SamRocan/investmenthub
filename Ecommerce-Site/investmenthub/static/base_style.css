@@ -264,6 +264,13 @@ footer a:hover {
     display: inline-block;
 }
 
+.btn-sm-screen {
+    display: block;
+}
+.btn-norm-screen {
+    display: none;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 100px) {
     .form-inline .form-control {
@@ -317,6 +324,14 @@ footer a:hover {
         width: 40%;
     }
 }
+@media (min-width: 465px) {
+    .btn-sm-screen {
+        display: none;
+    }
+    .btn-norm-screen {
+        display: inline;
+    }
+}
 @media (min-width: 1400px) {
     .form-inline .form-control {
         width: 600px;
@@ -329,5 +344,6 @@ footer a:hover {
     #sidebar {
         width: 30%;
     }
+
 }
 
