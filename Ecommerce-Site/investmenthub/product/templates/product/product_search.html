@@ -42,6 +42,11 @@
 
     <table class="styled-table-small">
         <tbody>
+        <thead>
+            <tr>
+                <td><p></p></td>
+            </tr>
+        </thead>
         {% for product in products %}
         <tr>
             <td><a href="{% url 'product_page' product.slug %}">{{product.title}}</a>
