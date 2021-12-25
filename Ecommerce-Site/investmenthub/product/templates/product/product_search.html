@@ -39,5 +39,23 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <table class="styled-table-small">
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td><a href="{% url 'product_page' product.slug %}">{{product.title}}</a>
+                <br>
+                <small>{{product.date_added.date}}</small>
+                <br>
+                <p>{{product.client}}</p>
+                <p>£{{product.price|intcomma}}</p>
+                <p style="background-color:{{ product.research_type.color }}; border-radius: 5px;  width: 60%; margin: auto">{{product.research_type}}</p>
+                <hr>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

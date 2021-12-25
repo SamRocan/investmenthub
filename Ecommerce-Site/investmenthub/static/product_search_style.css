@@ -7,6 +7,7 @@
     align-items: end;
 }
 .styled-table {
+    display: table;
     border-collapse: collapse;
     table-layout: fixed;
     font-size: 0.9em;
@@ -16,6 +17,23 @@
     margin-left: auto;
     margin-right: auto;
     width: 90%;
+}
+.styled-table-small {
+    display: none;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.styled-table-small a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
 }
 
 .styled-table tbody{
@@ -60,8 +78,17 @@
 .styled-table a:hover{
     color: royalblue;
 }
+
 @media only screen and (max-width: 860px) {
     .content-box form{
         display: inline;
+    }
+}
+@media only screen and (max-width: 610px) {
+    .styled-table {
+        display: none;
+    }
+    .styled-table-small {
+        display: table;
     }
 }
