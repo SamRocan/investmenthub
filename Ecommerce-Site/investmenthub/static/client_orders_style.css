@@ -12,6 +12,9 @@ table, th, td {
     text-align: center;
     margin-bottom: 20px;
 }
+.content-box {
+    text-align: center;
+}
 .content-box form{
     display: inline-flex;
     justify-content: space-between;
