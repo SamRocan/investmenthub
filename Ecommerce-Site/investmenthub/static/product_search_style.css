@@ -1,4 +1,7 @@
 /* table */
+table {
+    margin-bottom: 50px;
+}
 
 .content-box form{
     display: inline-flex;
@@ -78,6 +81,7 @@
 .styled-table a:hover{
     color: royalblue;
 }
+
 
 @media only screen and (max-width: 860px) {
     .content-box form{
