@@ -3,6 +3,7 @@ from django_filters import DateRangeFilter, CharFilter, ChoiceFilter
 from product.models import *
 from order.models import *
 
+
 class UserProductFilter(django_filters.FilterSet):
     name = CharFilter(label="Name", field_name="title", lookup_expr='icontains')
     price__gt = django_filters.NumberFilter(label="Min Price",field_name='price', lookup_expr='gt')

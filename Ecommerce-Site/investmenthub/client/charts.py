@@ -13,6 +13,10 @@ colorPrimary, colorSuccess, colorDanger = '#79aec8', colorPalette[0], colorPalet
 
 
 def get_year_dict():
+    '''
+    fill a dictionary with month of the year
+    :return: year_dict: dict
+    '''
     year_dict = dict()
 
     for month in months:
@@ -21,6 +25,13 @@ def get_year_dict():
     return year_dict
 
 def yearDict(year, month, day):
+    '''
+    Creates a dictionary containing the current days of the year so far
+    :param year: int
+    :param month: int
+    :param day: int
+    :return: calender: dict
+    '''
     calender = dict()
     x=1
     i=1
@@ -37,6 +48,10 @@ def yearDict(year, month, day):
     return calender
 
 def currentDaysOfYear():
+    '''
+    creates a calender up to the current date
+    :return: calender : dict
+    '''
     today = date.today()
     d = today.timetuple()
 
@@ -44,6 +59,11 @@ def currentDaysOfYear():
     return calender
 
 def getDateRange(dRange):
+    '''
+    creates a list of dates in a selected date range
+    :param dRange: int
+    :return: dates : list
+    '''
     tod = date.today()
     d = timedelta(days = dRange)
     a = tod - d
@@ -55,6 +75,12 @@ def getDateRange(dRange):
     return dates
 
 def getSoldCountAndRevenue(orders, rng):
+    '''
+    calculates number of products sold and total revenue in a period of time
+    :param orders: List of OrderItems Model Instances
+    :param rng: int
+    :return: list : list containing sold count and revenue count
+    '''
     sCount = 0
     rCount = 0
     for i in orders:
@@ -64,6 +90,12 @@ def getSoldCountAndRevenue(orders, rng):
     return [sCount, rCount]
 
 def getProductAddedCount(products, rng):
+    '''
+    finds the total number of products added by user over a period of timie
+    :param products: list of Product Model Instances
+    :param rng: int
+    :return: pAddedCount : int
+    '''
     pAddedCount = 0
     for i in products:
         if(i.date_added.date() in rng):
@@ -71,6 +103,11 @@ def getProductAddedCount(products, rng):
     return pAddedCount
 
 def generate_color_palette(amount):
+    '''
+    generates a color pallet depending on the size of items in the chart
+    :param amount: int
+    :return: palette : list of strings (hex colors)
+    '''
     palette = []
 
     i = 0
@@ -83,6 +120,11 @@ def generate_color_palette(amount):
     return palette
 
 def generate_color_palette_boarder(amount):
+    '''
+    generates a color pallet for borders depending on the size of items in the chart
+    :param amount: int
+    :return: palette : list of strings (hex colors)
+    '''
     palette = []
 
     i = 0

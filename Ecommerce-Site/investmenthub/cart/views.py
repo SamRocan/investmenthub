@@ -46,6 +46,12 @@ class OrderCompleted(View):
 #Create functions here to notify the seller,  and create orders
 
 def notify_seller(cart):
+    '''
+    Sends an email to the Seller of the product notifying him of his sale and the details
+    regarding it
+    :param cart: Cart
+    :return:
+    '''
     for i in cart:
         seller_email = i['product'].client.created_by.email
         email = EmailMessage(
@@ -59,6 +65,13 @@ def notify_seller(cart):
         email.send()
 
 def notify_buyer(cart, buyer_email):
+    '''
+    Sends an email to the buyer of the product notifying him of his purchase and the details
+    regarding it
+    :param cart: Cart
+    :param buyer_email: str
+    :return:
+    '''
     for i in cart:
         file = i['product'].file.path
         email = EmailMessage(
